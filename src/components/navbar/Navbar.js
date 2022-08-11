@@ -1,11 +1,18 @@
 import { Link }  from 'react-router-dom'
+import { useAuthContext } from '../../hooks/useAuthContext'
+import { useLogout } from '../../hooks/useLogout'
+
+//  assets
 import Cz from '../../assets/cze.svg'
 import Esp from '../../assets/esp.svg'
 import Gb from '../../assets/gb.svg'
+
 //styles
 import './Navbar.css'
 
 export default function Navbar() {
+  const { logout, isPending, error } = useLogout()
+  const { user } = useAuthContext()
   return (
     <nav className='navbar'>
         <ul>
@@ -26,9 +33,16 @@ export default function Navbar() {
                 </div>
             </li>
             <li className='login-nav'>
-              <Link to='/login'>Login</Link> 
-              <Link to='/signup'>Signup</Link>
-              <button className="btn">Logout</button>
+              { !user ? (
+                <>
+                <Link to='/login'>Login</Link> 
+                <Link to='/signup'>Signup</Link>
+                </>
+              ) : 
+                (<button onClick={logout} className="btn">Logout</button>)
+              }
+              
+              
             </li>
               
         </ul>

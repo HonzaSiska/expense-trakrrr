@@ -1,5 +1,6 @@
-import { BrowserRouter, Routes, Route, useNavigate} from 'react-router-dom'
-
+import { BrowserRouter, Routes, Route, Navigate} from 'react-router-dom'
+import { useAuthContext } from './hooks/useAuthContext';
+import { Redirect } from 'react-router-dom'
 //styles
 import './App.css';
 
@@ -16,24 +17,26 @@ import Create from './pages/create/Create';
 
 
 function App() {
+  const { user, authIsReady } = useAuthContext()
+
   return (
     <main className="App">
-      <BrowserRouter>
+      { authIsReady && (
+        <BrowserRouter>
         <Navbar/>
         <div className="container">
           
-          <Sidebar/>
+          {user &&  <Sidebar/>}
           <Routes>
-            <Route path='/' element={<Dashboard/>} />
-            <Route path='/login' element={<Login/>} />
-            <Route path='/signup' element={<Signup/>} />
-            <Route path='/create' element={<Create/>} />
+            <Route path='/' element={user ? <Dashboard/> : <Navigate to='/login'/>} />
+            <Route path='/login' element={!user  ?<Login/>: <Navigate to='/'/>} />
+            <Route path='/signup' element={!user ? <Signup/>: <Navigate to='/'/>} />
+            <Route path='/create' element={user ? <Create/> : <Navigate to='/'/>} />
           </Routes>
-          <Graphs/>
-        </div>
-        
-        
+          { user && <Graphs/>}
+        </div> 
       </BrowserRouter>
+      )}
     </main>
   );
 }

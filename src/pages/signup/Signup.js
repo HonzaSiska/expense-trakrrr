@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useSignup } from '../../hooks/useSignup'
 
 
 //Styles
@@ -12,12 +13,16 @@ export default function Signup() {
     const [thumbnail, setThumbnail] = useState(null)
     const [thumbnailError, setThumbnailError] = useState(null)
 
+    const { signup, isPending, error} = useSignup()
+
     const handleFile = (e) => {
 
     }
     const handleSubmit = (e) => {
         e.preventDefault()
         console.log(email, password, displayName)
+        signup(email,password,displayName, null)
+        
     }
 
   return (
@@ -62,6 +67,7 @@ export default function Signup() {
                     {thumbnailError && <div className='error'>{thumbnailError}</div>}
                 </label>
                 <button className='btn'>Submit</button>
+                {error && <p className='error'>{error}</p>}
             </form>
         </div>
     </div>

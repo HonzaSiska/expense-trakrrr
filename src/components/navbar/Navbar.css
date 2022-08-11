@@ -32,6 +32,11 @@
     font-weight: 700;
     padding: 10px;
 }
+.login-nav{
+  min-width: 200px;
+  display: flex ;
+  justify-content: end;
+}
 .flags-wrapper{
     display: flex;
 }
