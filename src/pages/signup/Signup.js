@@ -15,13 +15,34 @@ export default function Signup() {
 
     const { signup, isPending, error} = useSignup()
 
-    const handleFile = (e) => {
-
+    const handleFileChange = (e) => {
+        setThumbnail(null)
+        let selected = e.target.files[0]
+        console.log(selected)
+    
+        if (!selected) {
+          setThumbnailError('Please select a file')
+          return
+        }
+        if (!selected.type.includes('image')) {
+          setThumbnailError('Selected file must be an image')
+          return
+        }
+        if (selected.size > 100000) {
+          setThumbnailError('Image file size must be less than 100kb')
+          return
+        }
+        
+        setThumbnailError(null)
+        setThumbnail(selected)
+        console.log('thumbnail updated')
     }
+
+
     const handleSubmit = (e) => {
         e.preventDefault()
         console.log(email, password, displayName)
-        signup(email,password,displayName, null)
+        signup(email,password,displayName, thumbnail)
         
     }
 
@@ -62,12 +83,12 @@ export default function Signup() {
                     <input
                         type='file'
                         required
-                        onChange={handleFile}
+                        onChange={handleFileChange}
                     />
                     {thumbnailError && <div className='error'>{thumbnailError}</div>}
                 </label>
-                <button className='btn'>Submit</button>
                 {error && <p className='error'>{error}</p>}
+                {isPending ? <p>Processing ...</p> : <button className='btn'>Submit</button>}
             </form>
         </div>
     </div>

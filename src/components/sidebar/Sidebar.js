@@ -1,12 +1,14 @@
 import { NavLink } from 'react-router-dom'
-import Dashboard from '../../pages/dashboard/Dashboard'
-import Create from '../../pages/create/Create'
+import { useAuthContext } from '../../hooks/useAuthContext'
 
+//components
+import Avatar from '../avatar/Avatar'
 
 //styles
 import './Sidebar.css'
 
 export default function Sidebar() {
+    const { user }  = useAuthContext()
   return (
     <div className='sidebar'>
         <div className="sidebar-content">
@@ -14,7 +16,8 @@ export default function Sidebar() {
             <nav className="links">
                 <ul>
                     <li className='user'>
-                        <span>User Name</span>
+                        <Avatar url={user.photoURL}/>
+                        <p>{user.displayName}</p>
                     </li>
                     <li>
                         <NavLink to='/'>Dashboard</NavLink>

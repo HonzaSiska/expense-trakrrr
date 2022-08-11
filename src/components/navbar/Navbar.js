@@ -6,6 +6,9 @@ import { useLogout } from '../../hooks/useLogout'
 import Cz from '../../assets/cze.svg'
 import Esp from '../../assets/esp.svg'
 import Gb from '../../assets/gb.svg'
+import Bitcoin from '../../assets/bitcoin.svg'
+
+
 
 //styles
 import './Navbar.css'
@@ -18,7 +21,7 @@ export default function Navbar() {
         <ul>
         
             <li className='logo'>
-                <span>EXPENSE-TRAKRR</span>
+            <img src={Bitcoin} alt='image-logo'/><span>EXPENSE-TRAKRR</span>
             </li>
             <li className='flags-wrapper'>              
                 

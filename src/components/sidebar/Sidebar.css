@@ -1,13 +1,16 @@
 .sidebar{
     background: var(--main-sidebar);
     flex-grow: 1;
-    height: 100vh;
+    min-height: 100vh;
 }
 .user{
     margin-bottom: 40px;
     color: var(--light-graphs-back);
     font-weight: 700;
-    
+    display: flex;  
+    align-items: center;
+    column-gap: 5px;
+    font-style: italic;
 }
 
 .sidebar .links a {
