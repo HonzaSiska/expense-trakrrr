@@ -1,0 +1,5 @@
+.graphs{
+    flex-grow: 2;
+    background: var(--light-graphs-back);
+    /* border-left: 3px solid var(--main-sidebar) */
+}

@@ -1,0 +1,38 @@
+.sidebar{
+    background: var(--main-sidebar);
+    flex-grow: 1;
+    height: 100vh;
+}
+.user{
+    margin-bottom: 40px;
+    color: var(--light-graphs-back);
+    font-weight: 700;
+    
+}
+
+.sidebar .links a {
+    display: flex;
+    padding: 10px;
+    text-decoration: none;
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 15px 0 0 15px;
+    font-weight: 700;
+    
+}
+.sidebar li a{
+    color: var(--main-back)
+}
+.sidebar .links span {
+    display: flex;
+    padding: 10px;
+    text-decoration: none;
+    width: 100%;
+    box-sizing: border-box;
+    
+}
+.links li .active{
+    background-color: var(--main-back);
+    color: var(--links-color);
+   
+}

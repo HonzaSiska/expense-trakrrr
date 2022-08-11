@@ -1,0 +1,41 @@
+.navbar{
+    width: 100%;
+    background: rgb(173, 216, 238);
+    padding: 18px 0;
+}
+.navbar ul {
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    /* margin: 0 auto; */
+    margin: 0 15px 0 10px;
+}
+.navbar .logo{
+  font-weight: bold;
+  color: var(--main-sidebar);
+  letter-spacing: 1px;
+  display: flex;
+  background: var(--main-back);
+  padding: 8px 15px;
+  border-radius: 15px;
+  border: 3px solid var(--main-sidebar)
+  
+}
+.navbar ul div{
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    
+}
+.login-nav a{
+    color: var(--main-sidebar);
+    font-weight: 700;
+    padding: 10px;
+}
+.flags-wrapper{
+    display: flex;
+}
+.flag{
+    width: 30px;
+    margin: 0 30px;
+}

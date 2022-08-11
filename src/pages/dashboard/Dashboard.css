@@ -1,0 +1,5 @@
+.dashboard{
+    flex-grow: var(--flex-grow-center);
+    width: var(--center-width);
+    
+}

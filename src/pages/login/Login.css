@@ -1,0 +1,4 @@
+.login{
+    width: var(--center-width);
+    flex-grow:  var(--flex-grow-center);;
+}
