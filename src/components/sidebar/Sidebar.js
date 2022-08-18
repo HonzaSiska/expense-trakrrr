@@ -8,7 +8,8 @@ import Avatar from '../avatar/Avatar'
 import './Sidebar.css'
 
 export default function Sidebar() {
-    const { user }  = useAuthContext()
+  const { user, lang, translate  }  = useAuthContext()
+
   return (
     <div className='sidebar'>
         <div className="sidebar-content">
@@ -23,7 +24,7 @@ export default function Sidebar() {
                         <NavLink to='/'>Dashboard</NavLink>
                     </li>
                     <li>
-                        <NavLink to='/create'>Create</NavLink>
+                        <NavLink to='/create'>{ translate(lang, 'Nový','Create','Crear') }</NavLink>
                     </li>
                 </ul>
             </nav>

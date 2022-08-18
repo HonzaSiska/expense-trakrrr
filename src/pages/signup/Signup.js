@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useSignup } from '../../hooks/useSignup'
+import { useAuthContext } from '../../hooks/useAuthContext'
 
 
 //Styles
@@ -13,7 +14,8 @@ export default function Signup() {
     const [thumbnail, setThumbnail] = useState(null)
     const [thumbnailError, setThumbnailError] = useState(null)
 
-    const { signup, isPending, error} = useSignup()
+    const { signup, isPending, setIsPending, error} = useSignup()
+    const { user, lang, translate  }  = useAuthContext()
 
     const handleFileChange = (e) => {
         setThumbnail(null)
@@ -21,15 +23,33 @@ export default function Signup() {
         console.log(selected)
     
         if (!selected) {
-          setThumbnailError('Please select a file')
+          const message = translate(lang, 'Vyber soubor','Please select a file','Seleccione un archivo') 
+          setThumbnailError(message)
+          setIsPending(false)
+          setThumbnail(null)
+          setTimeout(() => {
+            setThumbnailError(null)
+          }, 2000);
           return
         }
         if (!selected.type.includes('image')) {
-          setThumbnailError('Selected file must be an image')
+          const message = translate(lang, 'Zvolený soubor musí být fotka','Selected file must be an image','El archivo seleccionado debe ser una imagen') 
+          setThumbnailError(message)
+          setIsPending(false)
+          setThumbnail(null)
+          setTimeout(() => {
+            setThumbnailError(null)
+          }, 2000);
           return
         }
         if (selected.size > 100000) {
-          setThumbnailError('Image file size must be less than 100kb')
+          const message = translate(lang, 'Zvolený soubor musí být menší než 100kb','Image file size must be less than 100kb','El tamaño del archivo de imagen debe ser inferior a 100 kb') 
+          setThumbnailError(message) 
+          setIsPending(false)
+          setThumbnail(null)
+          setTimeout(() => {
+            setThumbnailError(null)
+          }, 2000);
           return
         }
         
@@ -41,14 +61,14 @@ export default function Signup() {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        console.log(email, password, displayName)
+        if(thumbnailError) return
         signup(email,password,displayName, thumbnail)
         
     }
 
   return (
     <div className='signup'>
-        <h2 className='pageTitle'>Signup</h2>
+        <h2 className='pageTitle'>{translate(lang, 'Registrace','Registro')}</h2>
         <div className="form">
             <form onSubmit={handleSubmit}>
                 <label>
@@ -61,7 +81,7 @@ export default function Signup() {
                     />
                 </label>
                 <label>
-                    <span>password:</span>
+                    <span>{translate(lang, 'heslo','password','contraseña')}</span>
                     <input
                     required
                     type="password" 
@@ -70,7 +90,7 @@ export default function Signup() {
                     />
                 </label>
                 <label>
-                    <span>display name:</span>
+                    <span>{translate(lang, 'uživatelské jméno','display name','usuario')}</span>
                     <input
                     required
                     type="text" 
@@ -79,7 +99,7 @@ export default function Signup() {
                     />
                 </label>
                 <label>
-                    <span>profile image:</span>
+                    <span>{translate(lang, 'profilové foto','profile image','foto de perfil')}</span>
                     <input
                         type='file'
                         required
@@ -88,7 +108,7 @@ export default function Signup() {
                     {thumbnailError && <div className='error'>{thumbnailError}</div>}
                 </label>
                 {error && <p className='error'>{error}</p>}
-                {isPending ? <p>Processing ...</p> : <button className='btn'>Submit</button>}
+                {isPending ? <p>{translate(lang, 'probihá registrace ...','processing ...','procesamiento ...')}</p> : <button className='btn'>{translate(lang, 'heslo','password','contraseña')}</button>}
             </form>
         </div>
     </div>

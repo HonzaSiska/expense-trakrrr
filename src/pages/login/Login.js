@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useLogin } from '../../hooks/useLogin'
+import { useAuthContext } from '../../hooks/useAuthContext'
 
 //Styles
 import './Login.css'
@@ -11,6 +12,8 @@ export default function Login() {
     const [displayName, setDisplayName] = useState('')
 
     const { login, isPending, error } = useLogin()
+
+    const { lang, translate } = useAuthContext()
     
   
 
@@ -35,7 +38,7 @@ export default function Login() {
                     />
                 </label>
                 <label>
-                    <span>password:</span>
+                    <span>{translate(lang, 'heslo','password','contraseña')}</span>
                     <input
                     required
                     type="password" 
@@ -45,7 +48,7 @@ export default function Login() {
                 </label>
                 
                 { error && <p className='error'>{error}</p>}
-                <button className='btn'>Submit</button>
+                {isPending ? <p>{translate(lang, 'probihá přihášení ...','processing ...','procesamiento ...')}</p> : <button className='btn'>{translate(lang, 'Přihlásit se','Send','Iniciar sesión')}</button>}
             </form>
         </div>
     </div>

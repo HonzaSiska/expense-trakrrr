@@ -12,6 +12,9 @@ export const authReducer = (state, action) => {
       return { ...state, user: null }
     case 'AUTH_IS_READY':
       return { user: action.payload, authIsReady: true }
+    case 'CHANGE_LANGUAGE':
+            
+      return { ...state, lang: action.payload}
     default:
       return state
   }
@@ -20,11 +23,36 @@ export const authReducer = (state, action) => {
 export const AuthContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(authReducer, { 
     user: null,
-    authIsReady: false
+    authIsReady: false,
+    lang: 'english'
   })
 
+  const changeLanguage = (language) => {
+    dispatch({
+        type: 'CHANGE_LANGUAGE',
+        payload: language
+    })
+}
+
+const translate = (lang, czWord, enWord, espWord) => {
+   
+    switch(lang){
+        case 'cesky':
+            return czWord
+        case 'espanol':
+            return espWord
+        case 'english':
+            return enWord
+        
+    }
+}
+
+  
+
   useEffect(() => {
+    
     const unsub = onAuthStateChanged(auth, user => {
+      
       dispatch({ type: 'AUTH_IS_READY', payload: user })
       unsub()
     })
@@ -33,7 +61,7 @@ export const AuthContextProvider = ({ children }) => {
   console.log('AuthContext state:', state)
   
   return (
-    <AuthContext.Provider value={{ ...state, dispatch }}>
+    <AuthContext.Provider value={{ ...state, dispatch, changeLanguage, translate }}>
       { children }
     </AuthContext.Provider>
   )

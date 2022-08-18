@@ -36,6 +36,7 @@ export const useLogin = () => {
       }
 
     setError(err.message)
+    setIsPending(false)
     }
   }
 

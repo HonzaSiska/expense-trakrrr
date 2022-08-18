@@ -14,11 +14,18 @@ import Dashboard from './pages/dashboard/Dashboard';
 import Login from './pages/login/Login';
 import Signup from './pages/signup/Signup';
 import Create from './pages/create/Create';
+import { useEffect } from 'react';
 
 
 function App() {
-  const { user, authIsReady } = useAuthContext()
+  const { user, authIsReady, lang, dispatch  } = useAuthContext()
 
+  useEffect(() => {
+    if(lang === undefined){
+      
+      if(lang === undefined){ dispatch({type: 'CHANGE_LANGUAGE', payload: 'english'})}
+    }
+  })
   return (
     <main className="App">
       { authIsReady && (
