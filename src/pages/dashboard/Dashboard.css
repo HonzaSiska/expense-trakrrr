@@ -13,10 +13,14 @@
     align-items: flex-end;
     justify-content: space-between;
     margin-bottom: 30px;
-    padding: 20px;
+    padding: 0px 20px 10px;
     -webkit-box-shadow: 5px 5px 21px -3px rgba(0,0,0,0.33); 
     box-shadow: 5px 5px 21px -3px rgba(0,0,0,0.33);
     border-radius: 20px 0;
+}
+
+.expense-item h3{
+    color: var(--links-color);
 }
 
 .dashboard p {

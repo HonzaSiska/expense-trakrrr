@@ -54,13 +54,14 @@ export default function Create() {
         return
       }
       const ref = collection(db, 'expenses')
-
+      console.log('date',new Date(date))
       await addDocument({
         description,
         date: new Date(date),
         amount: parseFloat(amount),
         user: user.uid
       })
+      console.log('date',new Date(date))
 
   }
   return (
