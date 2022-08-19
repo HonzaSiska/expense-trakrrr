@@ -7,6 +7,9 @@
   --flex-grow-center: 4;
   --main-back:rgb(239, 240, 240);
   --links-color:rgb(49, 93, 195);
+  --delete-color: rgb(247, 81, 16);
+  --amount: rgb(71, 136, 6);
+  
 }
 
 body {
@@ -38,10 +41,18 @@ p, span, a, input{
   color: var(--links-color);
   font-weight: 700;
 }
+.delete{
+  color: var(--delete-color);
+  border: 1px solid var(--delete-color);
+  font-size: 15px;
+}
 .btn:hover{
   background: var(--main-sidebar);
   color:var(--main-back);
   cursor: pointer;
+}
+.delete:hover{
+  background: var(--delete-color);
 }
 .pageTitle{
   /* background:rgb(84, 83, 90); */
@@ -83,4 +94,11 @@ p, span, a, input{
 }
 .form button{
   margin-top: 30px;
+}
+.amount{
+  color: var(--amount);
+  padding: 5px;
+  border: 1px solid var(--amount);
+  margin-bottom: 10px;
+  
 }

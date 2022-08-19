@@ -1,5 +1,24 @@
 .dashboard{
     flex-grow: var(--flex-grow-center);
     width: var(--center-width);
-    
+    margin-bottom: 30px;    
+}
+.dashboard-items{
+    margin: auto;
+    margin-top: 30px;
+    max-width: 80%;
+}
+.expense-item{
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 30px;
+    padding: 20px;
+    -webkit-box-shadow: 5px 5px 21px -3px rgba(0,0,0,0.33); 
+    box-shadow: 5px 5px 21px -3px rgba(0,0,0,0.33);
+    border-radius: 20px 0;
+}
+
+.dashboard p {
+    color: var(--links-color)
 }
