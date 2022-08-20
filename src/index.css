@@ -103,6 +103,7 @@ p, span, a, input{
   font-size: small;
   border-radius: 5px;
   display: inline-block;
+  font-weight: 700;
 }
 .date{
   font-size: small;

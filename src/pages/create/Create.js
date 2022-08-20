@@ -1,7 +1,7 @@
 import { useAuthContext } from '../../hooks/useAuthContext'
 import { useEffect, useState } from 'react'
 import { db } from '../../firebase/config'
-import { collection, addDoc } from 'firebase/firestore'
+import { collection, serverTimestamp } from 'firebase/firestore'
 import { useFirestore } from '../../hooks/useFirestore'
 
 //styles
@@ -18,7 +18,7 @@ export default function Create() {
   const [date, setDate] = useState('')
   const [amount, setAmount] = useState(0)
   const [validationError, setValidationError] = useState(null)
-
+   console.log('selected date', date)
   
   useEffect(()=> {
     const message = translate(lang, 'Nový záznam byl vytvořen ','New expense was created','Nuevo gasto fue creado')
@@ -57,11 +57,13 @@ export default function Create() {
       console.log('date',new Date(date))
       await addDocument({
         description,
-        date: new Date(date),
+        date: parseFloat(new Date(date).valueOf()),
+        // date: date.replace(/-/g, ""),
+        //date: serverTimestamp(date),
         amount: parseFloat(amount),
         user: user.uid
       })
-      console.log('date',new Date(date))
+      
 
   }
   return (

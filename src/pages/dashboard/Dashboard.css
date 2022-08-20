@@ -26,3 +26,30 @@
 .dashboard p {
     color: var(--links-color)
 }
+.date-range{
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+}
+.date-range input, span{
+    margin-left: 5px;
+}
+.date-range  span{
+    font-size: small;
+}
+.date-range img {
+    width: 18px;
+    margin-left: 5px;
+    padding: 2px;
+    border: 1px solid var(--links-color);
+    background: white;
+    border-radius: 3px;
+    cursor: pointer;
+    
+}
+.date-range img:hover {
+    background: var(--main-back);
+  
+}
