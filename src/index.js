@@ -14,9 +14,11 @@ root.render(
     {/* <LanguageProvider> */}
       <AuthContextProvider>
         <App />
+
       </AuthContextProvider>  
     {/* </LanguageProvider>  */}
   </React.StrictMode>
+   //document.getElementById('root')
 );
 
 

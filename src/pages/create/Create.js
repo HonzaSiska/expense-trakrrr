@@ -100,7 +100,7 @@ export default function Create() {
                 
                 { validationError && <p className='error'>{validationError}</p>}
                 { error && <p className='error'>{error}</p>}
-                {isPending ? <p>{translate(lang, 'ukládá se ...','processing ...','procesamiento ...')}</p> : <button className='btn'>{translate(lang, 'Přihlásit se','Send','Iniciar sesión')}</button>}
+                {isPending ? <p>{translate(lang, 'ukládá se ...','processing ...','procesamiento ...')}</p> : <button className='btn'>{translate(lang, 'Uložit','Save','Guardar')}</button>}
             </form>
         </div>
     </div>

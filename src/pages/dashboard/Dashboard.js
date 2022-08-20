@@ -1,5 +1,6 @@
 import { useCollection } from '../../hooks/useCollection'
 import { useAuthContext } from '../../hooks/useAuthContext'
+import { useConversion } from '../../hooks/useConversion'
 import { useState } from 'react'
 
 //components
@@ -11,38 +12,26 @@ import Search from '../../assets/search.svg'
 //styles
 import './Dashboard.css'
 
+
 export default function Dashboard() {
 
   const { user, lang, translate } = useAuthContext()
+  const { formatDate, getFirstDayOfMonth } = useConversion()
 
-  // ----> nutno dynamicky nastavit datum na soucasny mesic
-  const [startDate, setStartDate] = useState('2022-08-01')
-  const [endDate, setEndDate] = useState('2022-08-19')
+  // GENERATE FIRST DAY  AND CURRENT DAY OF THE MONTH
+  const firstDay  = getFirstDayOfMonth(new Date())
+  const currentDay  = formatDate(new Date())
+  
+  //STATE
+  const [startDate, setStartDate] = useState(firstDay)
+  const [endDate, setEndDate] = useState(currentDay)
 
-  // convert date field value to milisecs
+  // convert the date field values to milisecs for quering the DB
   const sd = parseFloat(new Date(startDate).valueOf())
   const ed = parseFloat(new Date(endDate).valueOf())
    
-
-  const { documents, error } = useCollection('expenses', ["user", "==", user.uid], ['date', 'desc'], ["date", ">", sd],["date" ,"<", ed])
-  //const { documents, error } = useCollection('expenses', ["user", "==", user.uid], ['date', 'desc'], ["date", ">", parseFloat(new Date('2022-08-15').valueOf())])
-  // const { documents, error } = useCollection('expenses', ["user", "==", user.uid], ['date', 'desc'], ["date", ">", parseFloat(new Date('2022-08-15').valueOf()), "date"],["date" ,"<", parseFloat(new Date('2022-08-17').valueOf())])
-  // console.log('ts', parseFloat(new Date('2022-08-17').valueOf()))
-  console.log('startDate',startDate)
-
-
-  // FORMAT DATE TP (YYYY_MM_DD)
-  const formatDate = (date) => {
-    const myDate = new Date(date);
-    let d = myDate.getDate();
-    let m =  myDate.getMonth();
-    m += 1;  
-    const y = myDate.getFullYear();
-    m = m < 10 ? `0${m}` : m
-    d = d < 10 ? `0${d}` : d
-    const newDate=(y+ "-" + m + "-" + d);
-    return newDate
-  }
+  // QUERY THE DB COLLECTION USING CUSTOM HOOK useCollection
+  const { documents, error } = useCollection('expenses', ["user", "==", user.uid], ['date', 'desc'], ["date", ">=", sd],["date" ,"<=", ed])
 
   return (
     

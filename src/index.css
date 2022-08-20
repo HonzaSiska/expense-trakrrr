@@ -42,9 +42,25 @@ p, span, a, input{
   font-weight: 700;
 }
 .delete{
-  color: var(--delete-color);
+  color: white;
   border: 1px solid var(--delete-color);
+  background: var(--delete-color);
   font-size: 15px;
+}
+
+.modal-delete-btn{
+  font-size: 30px;
+  padding: 20px;
+  margin: 20px;
+  background: var(--delete-color);
+  cursor: pointer;
+}
+.modal-cancel-btn{
+  font-size: 30px;
+  padding: 20px;
+  margin: 20px;
+  background: var(--amount);
+  cursor: pointer;
 }
 .btn:hover{
   background: var(--main-sidebar);
@@ -52,8 +68,10 @@ p, span, a, input{
   cursor: pointer;
 }
 .delete:hover{
-  background: var(--delete-color);
+  background: white;
+  color: var(--delete-color);
 }
+
 .pageTitle{
   /* background:rgb(84, 83, 90); */
   margin: 0;
