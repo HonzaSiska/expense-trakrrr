@@ -2,6 +2,7 @@ import { useCollection } from '../../hooks/useCollection'
 import { useAuthContext } from '../../hooks/useAuthContext'
 import { useConversion } from '../../hooks/useConversion'
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 //components
 import DasboardList from './DashboardList'
@@ -17,6 +18,9 @@ export default function Dashboard() {
 
   const { user, lang, translate } = useAuthContext()
   const { formatDate, getFirstDayOfMonth } = useConversion()
+
+  const navigate = useNavigate()
+
 
   // GENERATE FIRST DAY  AND CURRENT DAY OF THE MONTH
   const firstDay  = getFirstDayOfMonth(new Date())
@@ -54,7 +58,11 @@ export default function Dashboard() {
             value={endDate}
           />
         </label>
-        <img src={Search} alt='search-icon'/>
+
+        {/* on click sends constructed query, dates converted from milisecs do dat format 
+        it will be converted to milisecs in on the search page for quering the DB*/}
+        <img src={Search} alt='search-icon' onClick={()=> navigate(`/search?from=${formatDate(sd)}&to=${formatDate(ed)}`)}/>
+      
       </div>
       <div className='dashboard-items'>
       {error && <p>{error}</p>}

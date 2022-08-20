@@ -53,3 +53,12 @@
     background: var(--main-back);
   
 }
+.back{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 20px;
+}
+.back img{
+    width: 20px;
+}

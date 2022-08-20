@@ -14,6 +14,7 @@ import Dashboard from './pages/dashboard/Dashboard';
 import Login from './pages/login/Login';
 import Signup from './pages/signup/Signup';
 import Create from './pages/create/Create';
+import Search from './pages/dashboard/Search';
 import { useEffect } from 'react';
 
 
@@ -39,6 +40,7 @@ function App() {
             <Route path='/login' element={!user  ?<Login/>: <Navigate to='/'/>} />
             <Route path='/signup' element={!user ? <Signup/>: <Navigate to='/'/>} />
             <Route path='/create' element={user ? <Create/> : <Navigate to='/'/>} />
+            <Route path='/search' element={user ? <Search/> : <Navigate to='/search'/>} />
           </Routes>
           { user && <Graphs/>}
         </div> 
