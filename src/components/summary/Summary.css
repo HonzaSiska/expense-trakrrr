@@ -1,0 +1,9 @@
+.sum{
+    color: var(--main-back);
+    font-weight: bold;
+    padding: 3px;
+    border: 1px solid var(--main-back);
+    border-radius: 3px;
+    background: rgb(239, 240, 240, 0.1);
+    
+}

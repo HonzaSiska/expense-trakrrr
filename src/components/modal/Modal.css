@@ -1,0 +1,21 @@
+.modal{
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1000;
+    background: var(--links-color);
+    position: fixed;
+    background-color: rgb(49, 93, 195, 0.7);
+}
+.modal-content{
+    position: fixed;
+    padding: 20px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 1000;
+    border: 2px solid white;
+    border-radius: 15px;
+    background-color: rgb(49, 93, 195, 0.7);
+}
