@@ -22,15 +22,14 @@ export default function Create() {
   
   useEffect(()=> {
     const message = translate(lang, 'Nový záznam byl vytvořen ','New expense was created','Nuevo gasto fue creado')
-        
-    setValidationError(message)
-        setTimeout(() => {
-          setValidationError('')
-        }, 2500);
+    success && setValidationError(message)
+    success && setTimeout(() => {
+      setValidationError('')
+    }, 2500);
 
-        setDate('')
-        setAmount('')
-        setDescription('')
+    setDate('')
+    setAmount('')
+    setDescription('')
 
   }, [success])
 
