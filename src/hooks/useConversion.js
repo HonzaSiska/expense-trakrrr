@@ -25,5 +25,17 @@ export const useConversion = (data) => {
     return newDate
   }
 
-  return {formatDate, getFirstDayOfMonth}
+  const parseYear = (date) => {
+    const newDate = new Date(date)
+    const year = newDate.getFullYear()
+    return  year
+  }
+  const parseMonth = (date) => {
+    const newDate = new Date(date)
+    const month = newDate.getMonth() + 1
+    return  month
+  }
+
+
+  return {formatDate, getFirstDayOfMonth, parseYear, parseMonth}
 }
