@@ -120,7 +120,7 @@ export default function Graphs() {
           <img onClick={handleOpen} src={PieChartIcon} alt='chart-icon' className='chart-icon'/>
           <div  className={isOpen ? 'chart-wrapper slideIn': 'chart-wrapper '}>
           <h3>{dateByLanguage(new Date(`${startYear}-01-01`), lang)} - {dateByLanguage(new Date(), lang)}</h3>
-            <AreaChart width={400} height={200} data={updatedDocs} margin={{ top: 50, right: 30, left: 0, bottom: 0 }}>
+            <AreaChart width={300} height={200} data={updatedDocs} margin={{ top: 50, right: 20, left: 0, bottom: 0 }}>
             <defs>
               <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
                 <stop offset="5%" stopColor="#8884d8" stopOpacity={0.8}/>
