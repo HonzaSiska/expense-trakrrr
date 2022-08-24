@@ -21,7 +21,7 @@ import './Dashboard.css'
 export default function Dashboard() {
 
   const { user, lang, translate } = useAuthContext()
-  const { formatDate, getFirstDayOfMonth } = useConversion()
+  const { formatDate, getFirstDayOfMonth, dateByLanguage } = useConversion()
 
   const navigate = useNavigate()
 
@@ -75,7 +75,9 @@ export default function Dashboard() {
         <img src={Search} alt='search-icon' onClick={()=> navigate(`/search?from=${formatDate(sd)}&to=${formatDate(ed)}`)}/>
       
       </div>
+      
       <div className='dashboard-items'>
+        <h3>{dateByLanguage(new Date(firstDay), lang)} - {dateByLanguage(new Date(), lang)}</h3>
         {error && <p>{error}</p>}
         {!error  && <DasboardList documents={documents} />} 
       </div>

@@ -1,7 +1,13 @@
 .dashboard{
     flex-grow: var(--flex-grow-center);
     width: var(--center-width);
-    margin-bottom: 30px;    
+    margin-bottom: 30px;   
+    overflow: hidden; 
+}
+
+.dashboard h3 {
+    text-align: center;
+    color: gray;
 }
 .summary-wrapper{
     display: flex;
@@ -17,6 +23,10 @@
     margin: auto;
     margin-top: 30px;
     max-width: 80%;
+}
+.dashboard-items h3{
+    color: gray;
+    text-align: center;
 }
 .expense-item{
     display: flex;

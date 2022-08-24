@@ -1,5 +1,8 @@
-export const useConversion = (data) => {
+import { useAuthContext } from "./useAuthContext";
 
+export const useConversion = () => {
+
+const { translate } = useAuthContext()
 // FORMAT DATE TP (YYYY_MM_DD)
   const formatDate = (date) => {
     const myDate = new Date(date);
@@ -36,6 +39,17 @@ export const useConversion = (data) => {
     return  month
   }
 
+  const dateByLanguage = ( date, lang ) => {
+    console.log('language', lang)
+    return date.toLocaleString(
+      translate(lang, 'cs-CZ', 'en-US', 'es-ES'),
+      {
+      month: "short",
+      day: "2-digit",
+      year: "numeric",
+      }
+  )}
 
-  return {formatDate, getFirstDayOfMonth, parseYear, parseMonth}
+
+  return {formatDate, getFirstDayOfMonth, parseYear, parseMonth, dateByLanguage}
 }
