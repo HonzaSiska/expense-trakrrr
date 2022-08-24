@@ -17,7 +17,7 @@
     }
 }
 .chart-wrapper{
-    margin-right: -400px;
+    margin-right: -350px;
     opacity: 0;
     animation: close-graphs 1s forwards;
 }
@@ -40,15 +40,37 @@
 
 
 @keyframes open-graphs {
-    0% { margin-right: -400px; }
+    0% { margin-right: -350px; opacity: 0;}
 
     100% { margin-right: 0; opacity: 1; }
     
 }
 @keyframes close-graphs {
     0% { margin-right: 0px; opacity: 1;}
-    75%{opacity: 0}
 
-    100% { margin-right: -400;}
+
+    100% { margin-right: -350px;}
     
+}
+
+@media screen and (max-width: 800px) {
+    /* .chart-wrapper{
+        margin-right: -300px;
+        opacity: 0;
+        animation: close-graphs 1s forwards;
+    } */
+
+    /* @keyframes open-graphs {
+        0% { margin-right: -300px; opacity: 0;}
+    
+        100% { margin-right: 0; opacity: 1; }
+        
+    }
+    @keyframes close-graphs {
+        0% { margin-right: 0px; opacity: 1;}
+    
+    
+        100% { margin-right: -300px;}
+        
+    } */
 }
