@@ -3,6 +3,7 @@
     width: var(--center-width);
     margin-bottom: 30px;   
     overflow: hidden; 
+    min-height: 100vh;
 }
 
 .dashboard h3 {
