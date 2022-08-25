@@ -16,7 +16,7 @@
   letter-spacing: 1px;
   display: flex;
   background: var(--main-back);
-  padding: 8px 15px;
+  padding: 4px 7px;
   border-radius: 15px;
   border: 3px solid var(--main-sidebar);
   align-items: center;
@@ -52,4 +52,86 @@
     width: 30px;
     margin: 0 30px;
     cursor: pointer;
+}
+@media screen and (max-width: 800px) {
+    .navbar{
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        background: rgb(173, 216, 238);
+        padding: 0;
+    }
+    .navbar ul{
+        /* display:flex;
+        align-items: center; */
+        /* justify-content: space-between; */
+        margin: 0;
+        padding: 0;
+        
+    }
+    .navbar ul div{
+        /* display:flex;
+        align-items: center; */
+        /* justify-content: space-between; */
+        margin: 0;
+        
+    }
+    .navbar ul li{
+        margin: 10px 0;
+        width: 100%;
+        
+    }
+    .flags-wrapper{
+        display: flex;
+        justify-content: center;
+        column-gap: 10px;
+    }
+    .navbar ul:first-child {
+        display: block;
+        /* display:flex; */
+        /* align-items: center;
+        flex-direction: column; */
+        /* justify-content: space-between; */
+        /* margin: 0 auto; */
+        /* margin: 0 15px 0 10px; */
+    }
+    .navbar .logo{
+      
+      font-weight: bold;
+      color: var(--main-sidebar);
+      letter-spacing: 1px;
+      display: flex;
+      background: var(--main-back);
+      padding: 4px 7px;
+      border-radius: 15px;
+      border: 3px solid var(--main-sidebar);
+      align-items: center;
+      justify-content: center;
+      column-gap: 0px;
+      
+    }
+    .navbar .logo img {
+        width: 30px;
+        border-radius: 50%;
+        border: 2px solid var(--main-sidebar);
+    
+    }
+    
+    /* .login-nav a{
+        color: var(--main-sidebar);
+        font-weight: 700;
+        padding: 5px;
+    } */
+    .login-nav{
+    
+      display: flex ;
+      justify-content: center;
+    }
+   
+    .flag{
+        /* width: 30px;
+        margin: 0 10px; */
+        cursor: pointer;
+    }
+    
 }

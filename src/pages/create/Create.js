@@ -1,8 +1,9 @@
 import { useAuthContext } from '../../hooks/useAuthContext'
 import { useEffect, useState } from 'react'
 import { db } from '../../firebase/config'
-import { collection, serverTimestamp } from 'firebase/firestore'
+import { collection} from 'firebase/firestore'
 import { useFirestore } from '../../hooks/useFirestore'
+import { useNavigate } from 'react-router-dom'
 
 //styles
 import './Create.css'
@@ -18,7 +19,8 @@ export default function Create() {
   const [date, setDate] = useState('')
   const [amount, setAmount] = useState(0)
   const [validationError, setValidationError] = useState(null)
-   console.log('selected date', date)
+  
+  const navigate = useNavigate()
   
   useEffect(()=> {
     const message = translate(lang, 'Nový záznam byl vytvořen ','New expense was created','Nuevo gasto fue creado')
@@ -40,6 +42,7 @@ export default function Create() {
       if(description ===''){
         const message = translate(lang, 'Vyplň pole popis','Fill out description','Complete la descripción')
         setValidationError(message)
+
         return
       }
       if(!date){
@@ -62,13 +65,15 @@ export default function Create() {
         amount: parseFloat(amount),
         user: user.uid
       })
+      navigate('/')
       
 
   }
   return (
     <div className='create'>
-        <h2 className='pageTitle'>{translate(lang, 'Vztvořit nový záznam','Create a new expense','Crear un nuevo gasto')}</h2>
+        
         <div className="form">
+        <h2 className='pageTitle'>{translate(lang, 'Nový záznam','New expense','Nuevo gasto')}</h2>
             <form onSubmit={handleSubmit}>
                 <label>
                     <span>{translate(lang, 'popis','description','descripcion')}</span>

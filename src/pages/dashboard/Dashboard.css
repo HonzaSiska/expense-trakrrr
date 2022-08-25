@@ -82,3 +82,27 @@
 .back img{
     width: 20px;
 }
+@media screen and (max-width: 800px) {
+    .dashboard-items{
+        margin-left: 20px;
+    }
+    .date-range{
+        display: flex;
+        flex-direction: column;
+        justify-items: center;
+    }
+    .date-range span{
+        margin: 0;
+        display: block;
+        margin: 5px 0;
+    }
+    label{
+        margin: 5px 0;    
+    }
+    .date-range img{
+        margin: 5px 0;
+    }
+    .summary-wrapper{
+        margin: 0;
+    }
+}

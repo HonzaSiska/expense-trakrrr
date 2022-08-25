@@ -50,7 +50,7 @@ export default function Navbar() {
             <li className='login-nav'>
               { !user ? (
                 <>
-                <Link to='/login'>{ translate(lang, 'Přrihlásit se','Login','Iniciar sesión') }</Link> 
+                <Link to='/login'>{ translate(lang, 'Přihlásit se','Login','Iniciar sesión') }</Link> 
                 <Link to='/signup'>{ translate(lang, 'Registrace','Signup','Regístrate') }</Link>
                 </>
               ) : 
