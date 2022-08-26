@@ -11,12 +11,10 @@ import './index.css';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    {/* <LanguageProvider> */}
       <AuthContextProvider>
         <App />
 
       </AuthContextProvider>  
-    {/* </LanguageProvider>  */}
   </React.StrictMode>
    //document.getElementById('root')
 );

@@ -82,8 +82,10 @@ export default function DashboardList({documents}) {
         }
         {isOpen && <Modal>
             <h1 style={{textAlign:'center', color:'white'}}>{translate(lang, 'Potvrdit smazání','Confirm Deletion', 'confirmar eliminación')}</h1>
-            <button className='modal-delete-btn' onClick={()=> removeDocument(docId)} >{translate(lang, 'Smazat','Delete', 'Borrar')}</button>
-            <button className='modal-cancel-btn' onClick={handleClose} >{translate(lang, 'zrušit', 'Cancel', 'Cancelar')}</button>
+            <div className='modal-btn-wrapper'>
+              <button className='modal-delete-btn' onClick={()=> removeDocument(docId)} >{translate(lang, 'Smazat','Delete', 'Borrar')}</button>
+              <button className='modal-cancel-btn' onClick={handleClose} >{translate(lang, 'zrušit', 'Cancel', 'Cancelar')}</button>
+            </div>
         </Modal>}
     </div>
   )

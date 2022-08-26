@@ -47,18 +47,22 @@ p, span, a, input{
   background: var(--delete-color);
   font-size: 15px;
 }
-
+.modal-btn-wrapper{
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
 .modal-delete-btn{
-  font-size: 30px;
-  padding: 20px;
-  margin: 20px;
+  font-size: 25px;
+  padding: 10px;
+  margin: 10px;
   background: var(--delete-color);
   cursor: pointer;
 }
 .modal-cancel-btn{
-  font-size: 30px;
-  padding: 20px;
-  margin: 20px;
+  font-size: 25px;
+  padding: 10px;
+  margin: 10px;
   background: var(--amount);
   cursor: pointer;
 }
