@@ -22,11 +22,21 @@ function App() {
   const { user, authIsReady, lang, dispatch  } = useAuthContext()
 
   useEffect(() => {
+
+    const language = localStorage.getItem('language')
+
+    // IF LANGUAGE IS SET IN LOCAL STORAGE , LOAD THE LANGUAGE
+    // OTHERWISE SET LANGUAGE TO ENGLISH
+
+    if(!language)localStorage.setItem('language', 'english')
+    if(language) dispatch({type: 'CHANGE_LANGUAGE', payload: language})
+   
     if(lang === undefined){
-      
-      if(lang === undefined){ dispatch({type: 'CHANGE_LANGUAGE', payload: 'english'})}
+      dispatch({type: 'CHANGE_LANGUAGE', payload: 'english'})
     }
-  })
+
+  },[lang])
+
   return (
     <main className="App">
       { authIsReady && (
