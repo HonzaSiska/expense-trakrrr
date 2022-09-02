@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import { useAuthContext } from '../../hooks/useAuthContext'
+import User from '../../assets/user.svg'
 
 //components
 import Avatar from '../avatar/Avatar'
@@ -21,6 +22,8 @@ export default function Sidebar() {
   const closeMenu = () => {
     setIsOpen(false)
   }
+
+  console.log('this is user', user)
   return (
     <div className={isOpen ? 'sidebar slide-menu-in': 'sidebar'}>
         <div className="sidebar-content">
@@ -33,7 +36,11 @@ export default function Sidebar() {
                 <ul>
                     
                     <li className='user'>
-                        <Avatar url={user.photoURL}/>
+                        {user.photoURL  && <Avatar url={user.photoURL}/> }
+                        {!user.photoURL && <Avatar url={User}/>}   
+                        {/* <Avatar url={user.photoURL}/> 
+                        <Avatar url={User}/>  */}
+                        
                         <p>{user.displayName}</p>
                     </li>
                     <li>

@@ -26,10 +26,17 @@ export const useSignup = () => {
         throw new Error('Could not complete signup')
       }
       
+      let imgUrl
 
-      const imageRef = ref(storage, `thumbnails/${res.user.uid}/${thumbnail.name}`)
-      const uploadedFile = await uploadBytes(imageRef,thumbnail)
-      const imgUrl = await getDownloadURL(imageRef)
+      
+      if(thumbnail){
+        const imageRef = ref(storage, `thumbnails/${res.user.uid}/${thumbnail.name}`)
+        const uploadedFile = await uploadBytes(imageRef,thumbnail)
+        imgUrl = await getDownloadURL(imageRef)
+      }else{
+        imgUrl = ''
+      }
+      
      
       //store user in the db
       const reference = collection(db, 'users')

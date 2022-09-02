@@ -22,16 +22,16 @@ export default function Signup() {
         let selected = e.target.files[0]
         console.log(selected)
     
-        if (!selected) {
-          const message = translate(lang, 'Vyber soubor','Please select a file','Seleccione un archivo') 
-          setThumbnailError(message)
-          setIsPending(false)
-          setThumbnail(null)
-          setTimeout(() => {
-            setThumbnailError(null)
-          }, 2000);
-          return
-        }
+        // if (!selected) {
+        //   const message = translate(lang, 'Vyber soubor','Please select a file','Seleccione un archivo') 
+        //   setThumbnailError(message)
+        //   setIsPending(false)
+        //   setThumbnail(null)
+        //   setTimeout(() => {
+        //     setThumbnailError(null)
+        //   }, 2000);
+        //   return
+        // }
         if (!selected.type.includes('image')) {
           const message = translate(lang, 'Zvolený soubor musí být fotka','Selected file must be an image','El archivo seleccionado debe ser una imagen') 
           setThumbnailError(message)
@@ -55,16 +55,18 @@ export default function Signup() {
         
         setThumbnailError(null)
         setThumbnail(selected)
-        console.log('thumbnail updated')
+        
     }
 
 
     const handleSubmit = (e) => {
         e.preventDefault()
         if(thumbnailError) return
+        console.log(thumbnail)
         signup(email,password,displayName, thumbnail)
         
     }
+
 
   return (
     <div className='signup'>
@@ -99,16 +101,15 @@ export default function Signup() {
                     />
                 </label>
                 <label>
-                    <span>{translate(lang, 'profilové foto','profile image','foto de perfil')}</span>
+                    <span>{translate(lang, 'profilové foto','profile image','foto de perfil')} {'  (max 100kb)'}</span>
                     <input
                         type='file'
-                        required
                         onChange={handleFileChange}
                     />
                     {thumbnailError && <div className='error'>{thumbnailError}</div>}
                 </label>
                 {error && <p className='error'>{error}</p>}
-                {isPending ? <p>{translate(lang, 'probihá registrace ...','processing ...','procesamiento ...')}</p> : <button className='btn'>{translate(lang, 'heslo','password','contraseña')}</button>}
+                {isPending ? <p>{translate(lang, 'probihá registrace ...','processing ...','procesamiento ...')}</p> : <button className='btn'>{translate(lang, 'odeslat','send','subir')}</button>}
             </form>
         </div>
     </div>
