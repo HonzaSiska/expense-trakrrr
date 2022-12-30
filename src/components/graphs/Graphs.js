@@ -105,8 +105,7 @@ export default function Graphs() {
           value: acc
         })
       }
-      
-      }
+    }
       
     
     console.log('groupeeDocs', groupedDocs)

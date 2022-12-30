@@ -52,7 +52,7 @@ export default function Dashboard() {
     <div className='dashboard'>
     
     <div className="back">
-        <button onClick={()=> navigate('/')}className='back'><img src={BackArrow} alt='back-arrow' /></button>
+        <button onClick={()=> navigate('/')} className='back'><img src={BackArrow} alt='back-arrow' /></button>
         <h2 className='pageTitle'>{translate(lang, `Výsledek hledání`,`Search Results`,`Resultados`)} </h2>    
     </div>
     <h3>{dateByLanguage(new Date(queryStartDate), lang)} - {dateByLanguage(new Date(queryEndDate), lang)}</h3>
